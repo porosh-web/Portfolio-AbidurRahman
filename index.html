@@ -1,345 +1,360 @@
-import React from 'react';
-import {
-  Briefcase,
-  Share2,
-  ShoppingCart,
-  Feather,
-  Kanban,
-  Bot,
-  User,
-  Zap,
-  CheckCircle,
-  Mail,
-  Linkedin,
-  Rocket,
-  Palette,
-  Layout,
-  MessageCircle,
-  Code,
-  Globe,
-  Database,
-  Grid,
-  FileText
-} from 'lucide-react';
-import { motion } from 'framer-motion';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Abidur Rahman - Virtual Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/11.2.10/framer-motion.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
 
-// Tailwind Merge Utility
-function twMerge(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
+<div id="root"></div>
 
-// Button Component with Animation and Vibrant Gradients
-const Button = ({ children, className, variant = 'default', size = 'default', ...props }) => {
-  const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
-  const variantClasses = {
-    default: 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 focus:ring-purple-500 shadow-lg',
-    outline: 'bg-transparent border-2 border-fuchsia-400 text-fuchsia-400 hover:bg-fuchsia-50 focus:ring-fuchsia-400',
-  };
-  const sizeClasses = {
-    default: 'h-12 px-8 py-3 text-base',
-    lg: 'h-14 px-10 py-4 text-lg',
-  };
-  return (
-    <motion.button
-      initial={{ scale: 0.9, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
-      className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}
-      {...props}
-    >
-      {children}
-    </motion.button>
-  );
-};
+<script type="text/babel">
+    const { useState, useEffect } = React;
+    const { motion } = window.FramerMotion;
 
-// Reusable Section Component with Animation
-const Section = ({ id, children, className, title, description, titleClass, descriptionClass }) => (
-  <motion.section
-    id={id}
-    className={twMerge('py-24 relative overflow-hidden', className)}
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{ duration: 0.8 }}
-    viewport={{ once: true, amount: 0.3 }}
-  >
-    <div className="container mx-auto px-4 relative z-10">
-      {title && (
-        <div className="text-center mb-16">
-          <h2 className={twMerge("text-4xl md:text-5xl font-extrabold mb-4", titleClass)}>{title}</h2>
-          {description && <p className={twMerge("text-lg md:text-xl max-w-2xl mx-auto", descriptionClass)}>{description}</p>}
+    // A simple function to merge Tailwind classes
+    const twMerge = (...classes) => classes.filter(Boolean).join(' ');
+
+    // Button Component with Animation and Vibrant Gradients
+    const Button = ({ children, className, variant = 'default', size = 'default', ...props }) => {
+      const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+      const variantClasses = {
+        default: 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 focus:ring-purple-500 shadow-lg',
+        outline: 'bg-transparent border-2 border-fuchsia-400 text-fuchsia-400 hover:bg-fuchsia-50 focus:ring-fuchsia-400',
+      };
+      const sizeClasses = {
+        default: 'h-12 px-8 py-3 text-base',
+        lg: 'h-14 px-10 py-4 text-lg',
+      };
+      return (
+        <motion.button
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+          className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}
+          {...props}
+        >
+          {children}
+        </motion.button>
+      );
+    };
+
+    // Reusable Section Component with Animation
+    const Section = ({ id, children, className, title, description, titleClass, descriptionClass }) => (
+      <motion.section
+        id={id}
+        className={twMerge('py-24 relative overflow-hidden', className)}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <div className="container mx-auto px-4 relative z-10">
+          {title && (
+            <div className="text-center mb-16">
+              <h2 className={twMerge("text-4xl md:text-5xl font-extrabold mb-4", titleClass)}>{title}</h2>
+              {description && <p className={twMerge("text-lg md:text-xl max-w-2xl mx-auto", descriptionClass)}>{description}</p>}
+            </div>
+          )}
+          {children}
         </div>
-      )}
-      {children}
-    </div>
-  </motion.section>
-);
+      </motion.section>
+    );
 
-// Service Card Component with Vibrant Colors
-const ServiceCard = ({ icon: Icon, title, items }) => (
-  <motion.div
-    initial={{ y: 20, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true, amount: 0.3 }}
-    className="bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center text-center transition-transform hover:scale-[1.02] border border-slate-100"
-  >
-    <div className="p-5 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 text-white mb-6 shadow-md">
-      <Icon size={32} />
-    </div>
-    <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
-    <ul className="text-slate-600 text-left list-none p-0 space-y-2">
-      {items.map((item, index) => (
-        <li key={index} className="flex items-start">
-          <CheckCircle size={16} className="text-fuchsia-500 mr-2 mt-1 flex-shrink-0" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  </motion.div>
-);
-
-// Pillar Card Component with Colorful Icons
-const PillarCard = ({ icon: Icon, title, description }) => (
-  <motion.div
-    initial={{ y: 20, opacity: 0 }}
-    whileInView={{ y: 0, opacity: 1 }}
-    transition={{ duration: 0.6 }}
-    viewport={{ once: true, amount: 0.3 }}
-    className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:scale-[1.02] border border-slate-100"
-  >
-    <div className="p-5 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 text-white mb-6 shadow-md">
-      <Icon size={32} />
-    </div>
-    <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
-    <p className="text-slate-600 text-sm">{description}</p>
-  </motion.div>
-);
-
-// Animated Background for various sections
-const AnimatedBackground = ({ className }) => (
-  <div className={twMerge("absolute inset-0 z-0 overflow-hidden", className)}>
-    <motion.div
-      initial={{ y: '100%', x: '-50%', scale: 0.5, rotate: 0 }}
-      animate={{ y: '-100%', x: '50%', scale: 1.5, rotate: 360 }}
-      transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}
-      className="absolute top-1/2 left-1/2 w-48 h-48 bg-fuchsia-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
-    ></motion.div>
-    <motion.div
-      initial={{ y: '-100%', x: '50%', scale: 1.5, rotate: 0 }}
-      animate={{ y: '100%', x: '-50%', scale: 0.5, rotate: -360 }}
-      transition={{ repeat: Infinity, duration: 30, ease: 'linear' }}
-      className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
-    ></motion.div>
-    <motion.div
-      initial={{ y: '50%', x: '-100%', scale: 1, rotate: 0 }}
-      animate={{ y: '-50%', x: '100%', scale: 0.8, rotate: 360 }}
-      transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
-      className="absolute top-1/3 right-1/4 w-32 h-32 bg-yellow-400 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
-    ></motion.div>
-    <motion.div
-      initial={{ y: '-50%', x: '100%', rotate: 0 }}
-      animate={{ y: '50%', x: '-100%', rotate: -360 }}
-      transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
-      className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-orange-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
-    ></motion.div>
-    <motion.div
-      initial={{ y: '100%', x: '100%', rotate: 0 }}
-      animate={{ y: '-100%', x: '-100%', rotate: 180 }}
-      transition={{ repeat: Infinity, duration: 22, ease: 'linear' }}
-      className="absolute top-3/4 left-1/4 w-56 h-56 bg-indigo-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
-    ></motion.div>
-  </div>
-);
-
-// Main Application Component
-const App = () => {
-  const tools = [
-    { name: 'Canva', icon: Palette },
-    { name: 'ChatGPT', icon: Bot },
-    { name: 'Claude', icon: Bot },
-    { name: 'DALL-E', icon: Globe },
-    { name: 'Adobe Firefly', icon: Rocket },
-    { name: 'Heygen', icon: Code },
-    { name: 'Sora', icon: Rocket },
-    { name: 'CapCut', icon: Grid },
-    { name: 'Google Workspace', icon: FileText },
-    { name: 'Microsoft Office', icon: FileText },
-    { name: 'Shopify', icon: ShoppingCart },
-    { name: 'WooCommerce', icon: Database },
-    { name: 'Elementor', icon: Layout },
-    { name: 'Divi', icon: Layout },
-    { name: 'Trello', icon: Kanban },
-    { name: 'Asana', icon: Kanban },
-    { name: 'ClickUp', icon: Kanban },
-  ];
-
-  return (
-    <div className="font-sans text-slate-800 bg-white">
-
-      {/* Hero Section */}
-      <Section id="hero" className="bg-gradient-to-br from-pink-50 to-white relative min-h-screen flex items-center">
-        <AnimatedBackground />
-        <div className="text-center max-w-4xl mx-auto py-24 z-10">
-          <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
-            className="text-6xl md:text-8xl font-extrabold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-fuchsia-600"
-          >
-            Md. Abidur Rahman
-          </motion.h1>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
-            className="text-xl md:text-2xl text-purple-600 font-bold mb-6"
-          >
-            Virtual Assistant | Social Media | Project Management | AI Prompt Engineer
-          </motion.p>
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-lg md:text-xl text-slate-600 mb-10 max-w-3xl mx-auto"
-          >
-            Dedicated Virtual Assistant with 10+ years of experience in streamlining workflows, managing projects, and delivering results. I specialize in social media management, e-commerce operations, AI-powered solutions, and organizational support to help businesses run smoothly.
-          </motion.p>
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.8, duration: 0.8 }}
-          >
-            <a href="#contact">
-              <Button size="lg" className="w-56">Contact Me</Button>
-            </a>
-          </motion.div>
+    // Service Card Component with Vibrant Colors
+    const ServiceCard = ({ icon, title, items }) => (
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center text-center transition-transform hover:scale-[1.02] border border-slate-100"
+      >
+        <div className="p-5 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 text-white mb-6 shadow-md">
+          {icon && <span dangerouslySetInnerHTML={{ __html: lucide.icons[icon].toSvg() }} />}
         </div>
-      </Section>
-
-      {/* About Section */}
-      <Section id="about" title="About Me" className="bg-white text-slate-900">
-        <p className="text-lg text-slate-600 max-w-3xl mx-auto text-center">
-          I’m a proactive and detail-oriented Virtual Assistant who thrives on organization, creativity, and problem-solving. Over the last decade, I’ve helped entrepreneurs, small businesses, and teams save time, stay organized, and grow faster. From managing e-commerce stores and social media campaigns to handling day-to-day admin tasks and project coordination, I bring structure, clarity, and efficiency to every role.
-        </p>
-      </Section>
-
-      {/* Services Section */}
-      <Section id="services" title="How I Can Help You" className="bg-white text-slate-900">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <ServiceCard
-            icon={Briefcase}
-            title="Virtual Assistance"
-            items={['Email & calendar management', 'Travel planning', 'Appointment scheduling', 'Customer service']}
-          />
-          <ServiceCard
-            icon={Share2}
-            title="Social Media Management"
-            items={['Strategy, content creation, and scheduling', 'Facebook, Instagram, LinkedIn, Twitter, YouTube']}
-          />
-          <ServiceCard
-            icon={ShoppingCart}
-            title="E-Commerce Store Management"
-            items={['Shopify, WooCommerce, Wix, Etsy, eBay', 'Product uploads, inventory tracking, order management']}
-          />
-          <ServiceCard
-            icon={Feather}
-            title="WordPress Support"
-            items={['Page building and updates', 'Using Elementor, Divi, Oxygen']}
-          />
-          <ServiceCard
-            icon={Kanban}
-            title="Project Management"
-            items={['Efficient workflows using Asana, Trello, Monday, ClickUp']}
-          />
-          <ServiceCard
-            icon={Bot}
-            title="AI-Powered Support"
-            items={['Prompt engineering, content creation', 'Simple video editing with tools like ChatGPT, Claude, Canva, CapCut, Heygen']}
-          />
-        </div>
-      </Section>
-
-      {/* Tools Section */}
-      <Section id="tools" title="Tools I Use" className="bg-white text-slate-900">
-        <div className="flex flex-wrap justify-center gap-8">
-          {tools.map((tool, index) => (
-            <motion.div
-              key={index}
-              initial={{ scale: 0.8, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              viewport={{ once: true, amount: 0.5 }}
-              className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-slate-100 transition-colors"
-            >
-              <div className="p-5 rounded-full bg-slate-100 mb-3 shadow-sm">
-                <tool.icon size={36} className="text-slate-600" />
-              </div>
-              <span className="text-sm font-medium text-slate-700">{tool.name}</span>
-            </motion.div>
+        <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
+        <ul className="text-slate-600 text-left list-none p-0 space-y-2">
+          {items.map((item, index) => (
+            <li key={index} className="flex items-start">
+              <span className="text-fuchsia-500 mr-2 mt-1 flex-shrink-0" dangerouslySetInnerHTML={{ __html: lucide.icons['check-circle'].toSvg() }} />
+              <span>{item}</span>
+            </li>
           ))}
-        </div>
-      </Section>
+        </ul>
+      </motion.div>
+    );
 
-      {/* Why Work With Me Section */}
-      <Section id="why-work-with-me" title="Why Work With Me" className="bg-white text-slate-900">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <PillarCard
-            icon={User}
-            title="10+ Years Experience"
-            description="Proven track record with diverse clients, delivering high-quality results consistently."
-          />
-          <PillarCard
-            icon={Zap}
-            title="Reliable & Proactive"
-            description="I anticipate needs, solve problems before they arise, and always deliver on time."
-          />
-          <PillarCard
-            icon={MessageCircle}
-            title="Versatile Skillset"
-            description="From day-to-day admin tasks to AI-powered solutions, I adapt to your unique needs."
-          />
+    // Pillar Card Component with Colorful Icons
+    const PillarCard = ({ icon, title, description }) => (
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.3 }}
+        className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:scale-[1.02] border border-slate-100"
+      >
+        <div className="p-5 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 text-white mb-6 shadow-md">
+          {icon && <span dangerouslySetInnerHTML={{ __html: lucide.icons[icon].toSvg() }} />}
         </div>
-      </Section>
+        <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
+        <p className="text-slate-600 text-sm">{description}</p>
+      </motion.div>
+    );
 
-      {/* Contact Section */}
-      <Section id="contact" title="Let’s Connect" className="bg-white text-slate-900">
-        <div className="max-w-xl mx-auto rounded-3xl shadow-2xl p-8 border border-slate-200">
-          <div className="flex justify-center items-center gap-8 mb-8">
-            <a href="mailto:porosh.abidlaw@gmail.com" className="flex items-center text-fuchsia-600 hover:text-fuchsia-700 transition-colors">
-              <Mail size={24} className="mr-2" />
-              <span className="font-medium">Email</span>
-            </a>
-            <a href="https://linkedin.com/in/rahman-abidur" target="_blank" rel="noopener noreferrer" className="flex items-center text-purple-600 hover:text-purple-700 transition-colors">
-              <Linkedin size={24} className="mr-2" />
-              <span className="font-medium">LinkedIn</span>
-            </a>
-          </div>
-          <form className="space-y-6">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
-              <input type="text" id="name" name="name" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required />
+    // Animated Background for various sections
+    const AnimatedBackground = ({ className }) => (
+      <div className={twMerge("absolute inset-0 z-0 overflow-hidden", className)}>
+        <motion.div
+          initial={{ y: '100%', x: '-50%', scale: 0.5, rotate: 0 }}
+          animate={{ y: '-100%', x: '50%', scale: 1.5, rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}
+          className="absolute top-1/2 left-1/2 w-48 h-48 bg-fuchsia-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+        ></motion.div>
+        <motion.div
+          initial={{ y: '-100%', x: '50%', scale: 1.5, rotate: 0 }}
+          animate={{ y: '100%', x: '-50%', scale: 0.5, rotate: -360 }}
+          transition={{ repeat: Infinity, duration: 30, ease: 'linear' }}
+          className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+        ></motion.div>
+        <motion.div
+          initial={{ y: '50%', x: '-100%', scale: 1, rotate: 0 }}
+          animate={{ y: '-50%', x: '100%', scale: 0.8, rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
+          className="absolute top-1/3 right-1/4 w-32 h-32 bg-yellow-400 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+        ></motion.div>
+        <motion.div
+          initial={{ y: '-50%', x: '100%', rotate: 0 }}
+          animate={{ y: '50%', x: '-100%', rotate: -360 }}
+          transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
+          className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-orange-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+        ></motion.div>
+        <motion.div
+          initial={{ y: '100%', x: '100%', rotate: 0 }}
+          animate={{ y: '-100%', x: '-100%', rotate: 180 }}
+          transition={{ repeat: Infinity, duration: 22, ease: 'linear' }}
+          className="absolute top-3/4 left-1/4 w-56 h-56 bg-indigo-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+        ></motion.div>
+      </div>
+    );
+
+    // Main Application Component
+    const App = () => {
+      const tools = [
+        { name: 'Canva', icon: 'palette' },
+        { name: 'ChatGPT', icon: 'bot' },
+        { name: 'Claude', icon: 'bot' },
+        { name: 'DALL-E', icon: 'globe' },
+        { name: 'Adobe Firefly', icon: 'rocket' },
+        { name: 'Heygen', icon: 'code' },
+        { name: 'Sora', icon: 'rocket' },
+        { name: 'CapCut', icon: 'grid' },
+        { name: 'Google Workspace', icon: 'file-text' },
+        { name: 'Microsoft Office', icon: 'file-text' },
+        { name: 'Shopify', icon: 'shopping-cart' },
+        { name: 'WooCommerce', icon: 'database' },
+        { name: 'Elementor', icon: 'layout' },
+        { name: 'Divi', icon: 'layout' },
+        { name: 'Trello', icon: 'kanban' },
+        { name: 'Asana', icon: 'kanban' },
+        { name: 'ClickUp', icon: 'kanban' },
+      ];
+    
+      return (
+        <div className="font-sans text-slate-800 bg-white">
+    
+          {/* Hero Section */}
+          <Section id="hero" className="bg-gradient-to-br from-pink-50 to-white relative min-h-screen flex items-center">
+            <AnimatedBackground />
+            <div className="text-center max-w-4xl mx-auto py-24 z-10">
+              <motion.h1
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+                className="text-6xl md:text-8xl font-extrabold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-fuchsia-600"
+              >
+                Md. Abidur Rahman
+              </motion.h1>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+                className="text-xl md:text-2xl text-purple-600 font-bold mb-6"
+              >
+                Virtual Assistant | Social Media | Project Management | AI Prompt Engineer
+              </motion.p>
+              <motion.p
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+                className="text-lg md:text-xl text-slate-600 mb-10 max-w-3xl mx-auto"
+              >
+                Dedicated Virtual Assistant with 10+ years of experience in streamlining workflows, managing projects, and delivering results. I specialize in social media management, e-commerce operations, AI-powered solutions, and organizational support to help businesses run smoothly.
+              </motion.p>
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+              >
+                <a href="#contact">
+                  <Button size="lg" className="w-56">Contact Me</Button>
+                </a>
+              </motion.div>
             </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
-              <input type="email" id="email" name="email" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required />
+          </Section>
+    
+          {/* About Section */}
+          <Section id="about" title="About Me" className="bg-white text-slate-900">
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto text-center">
+              I’m a proactive and detail-oriented Virtual Assistant who thrives on organization, creativity, and problem-solving. Over the last decade, I’ve helped entrepreneurs, small businesses, and teams save time, stay organized, and grow faster. From managing e-commerce stores and social media campaigns to handling day-to-day admin tasks and project coordination, I bring structure, clarity, and efficiency to every role.
+            </p>
+          </Section>
+    
+          {/* Services Section */}
+          <Section id="services" title="How I Can Help You" className="bg-white text-slate-900">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <ServiceCard
+                icon='briefcase'
+                title="Virtual Assistance"
+                items={['Email & calendar management', 'Travel planning', 'Appointment scheduling', 'Customer service']}
+              />
+              <ServiceCard
+                icon='share-2'
+                title="Social Media Management"
+                items={['Strategy, content creation, and scheduling', 'Facebook, Instagram, LinkedIn, Twitter, YouTube']}
+              />
+              <ServiceCard
+                icon='shopping-cart'
+                title="E-Commerce Store Management"
+                items={['Shopify, WooCommerce, Wix, Etsy, eBay', 'Product uploads, inventory tracking, order management']}
+              />
+              <ServiceCard
+                icon='feather'
+                title="WordPress Support"
+                items={['Page building and updates', 'Using Elementor, Divi, Oxygen']}
+              />
+              <ServiceCard
+                icon='kanban'
+                title="Project Management"
+                items={['Efficient workflows using Asana, Trello, Monday, ClickUp']}
+              />
+              <ServiceCard
+                icon='bot'
+                title="AI-Powered Support"
+                items={['Prompt engineering, content creation', 'Simple video editing with tools like ChatGPT, Claude, Canva, CapCut, Heygen']}
+              />
             </div>
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message</label>
-              <textarea id="message" name="message" rows="4" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required></textarea>
+          </Section>
+    
+          {/* Tools Section */}
+          <Section id="tools" title="Tools I Use" className="bg-white text-slate-900">
+            <div className="flex flex-wrap justify-center gap-8">
+              {tools.map((tool, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: index * 0.05 }}
+                  viewport={{ once: true, amount: 0.5 }}
+                  className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-slate-100 transition-colors"
+                >
+                  <div className="p-5 rounded-full bg-slate-100 mb-3 shadow-sm">
+                    <span dangerouslySetInnerHTML={{ __html: lucide.icons[tool.icon].toSvg() }} />
+                  </div>
+                  <span className="text-sm font-medium text-slate-700">{tool.name}</span>
+                </motion.div>
+              ))}
             </div>
-            <Button type="submit" className="w-full">Send Message</Button>
-          </form>
+          </Section>
+    
+          {/* Why Work With Me Section */}
+          <Section id="why-work-with-me" title="Why Work With Me" className="bg-white text-slate-900">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+              <PillarCard
+                icon='user'
+                title="10+ Years Experience"
+                description="Proven track record with diverse clients, delivering high-quality results consistently."
+              />
+              <PillarCard
+                icon='zap'
+                title="Reliable & Proactive"
+                description="I anticipate needs, solve problems before they arise, and always deliver on time."
+              />
+              <PillarCard
+                icon='message-circle'
+                title="Versatile Skillset"
+                description="From day-to-day admin tasks to AI-powered solutions, I adapt to your unique needs."
+              />
+            </div>
+          </Section>
+    
+          {/* Contact Section */}
+          <Section id="contact" title="Let’s Connect" className="bg-white text-slate-900">
+            <div className="max-w-xl mx-auto rounded-3xl shadow-2xl p-8 border border-slate-200">
+              <div className="flex justify-center items-center gap-8 mb-8">
+                <a href="mailto:porosh.abidlaw@gmail.com" className="flex items-center text-fuchsia-600 hover:text-fuchsia-700 transition-colors">
+                  <span dangerouslySetInnerHTML={{ __html: lucide.icons['mail'].toSvg() }} />
+                  <span className="font-medium">Email</span>
+                </a>
+                <a href="https://linkedin.com/in/rahman-abidur" target="_blank" rel="noopener noreferrer" className="flex items-center text-purple-600 hover:text-purple-700 transition-colors">
+                  <span dangerouslySetInnerHTML={{ __html: lucide.icons['linkedin'].toSvg() }} />
+                  <span className="font-medium">LinkedIn</span>
+                </a>
+              </div>
+              <form className="space-y-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+                  <input type="text" id="name" name="name" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required />
+                </div>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+                  <input type="email" id="email" name="email" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required />
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message</label>
+                  <textarea id="message" name="message" rows="4" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required></textarea>
+                </div>
+                <Button type="submit" className="w-full">Send Message</Button>
+              </form>
+            </div>
+          </Section>
+    
+          {/* Footer */}
+          <footer className="bg-slate-900 text-slate-400 text-center py-8">
+            <div className="container mx-auto px-4">
+              <p className="text-sm">&copy; 2025 Md. Abidur Rahman. All rights reserved.</p>
+            </div>
+          </footer>
         </div>
-      </Section>
+      );
+    };
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 text-center py-8">
-        <div className="container mx-auto px-4">
-          <p className="text-sm">&copy; 2025 Md. Abidur Rahman. All rights reserved.</p>
-        </div>
-      </footer>
-    </div>
-  );
-};
+    // Render the app
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(App));
+</script>
 
-export default App;
+</body>
+</html>
