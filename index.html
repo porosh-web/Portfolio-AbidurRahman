@@ -1,129 +1,345 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Md. Abidur Rahman - Virtual Assistant & AI Prompt Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='90' font-size='90'>✨</text></svg>">
-</head>
-<body class="bg-gray-50 text-gray-800 font-poppins antialiased leading-relaxed">
+import React from 'react';
+import {
+  Briefcase,
+  Share2,
+  ShoppingCart,
+  Feather,
+  Kanban,
+  Bot,
+  User,
+  Zap,
+  CheckCircle,
+  Mail,
+  Linkedin,
+  Rocket,
+  Palette,
+  Layout,
+  MessageCircle,
+  Code,
+  Globe,
+  Database,
+  Grid,
+  FileText
+} from 'lucide-react';
+import { motion } from 'framer-motion';
 
-    <header class="container mx-auto px-4 py-8 md:py-16">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
-            <div class="flex-1 text-center md:text-left">
-                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-gray-900 mb-4">
-                    Md. Abidur Rahman
-                </h1>
-                <p class="text-lg sm:text-xl text-indigo-600 font-medium mb-2">
-                    All Around Virtual Assistant | AI Prompt Engineer
-                </p>
-                <p class="text-gray-600 max-w-lg mx-auto md:mx-0">
-                    ✨ Top-Rated VA with 10+ Years of Experience in Turning To-Do Lists into Done Deals! A Jack of All Trades, Master of Results!
-                </p>
-                <div class="mt-8 flex justify-center md:justify-start space-x-4">
-                    <a href="mailto:porosh.abidlaw@gmail.com" class="button button-primary">
-                        Say Hello!
-                    </a>
-                    <a href="https://www.linkedin.com/in/rahman-abidur/" target="_blank" class="button button-secondary">
-                        LinkedIn
-                    </a>
-                </div>
+// Tailwind Merge Utility
+function twMerge(...classes) {
+  return classes.filter(Boolean).join(' ');
+}
+
+// Button Component with Animation and Vibrant Gradients
+const Button = ({ children, className, variant = 'default', size = 'default', ...props }) => {
+  const baseClasses = 'inline-flex items-center justify-center rounded-full font-medium transition-transform duration-300 ease-in-out hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none disabled:opacity-50';
+  const variantClasses = {
+    default: 'bg-gradient-to-r from-pink-500 to-purple-600 text-white hover:from-pink-600 hover:to-purple-700 focus:ring-purple-500 shadow-lg',
+    outline: 'bg-transparent border-2 border-fuchsia-400 text-fuchsia-400 hover:bg-fuchsia-50 focus:ring-fuchsia-400',
+  };
+  const sizeClasses = {
+    default: 'h-12 px-8 py-3 text-base',
+    lg: 'h-14 px-10 py-4 text-lg',
+  };
+  return (
+    <motion.button
+      initial={{ scale: 0.9, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+      className={twMerge(baseClasses, variantClasses[variant], sizeClasses[size], className)}
+      {...props}
+    >
+      {children}
+    </motion.button>
+  );
+};
+
+// Reusable Section Component with Animation
+const Section = ({ id, children, className, title, description, titleClass, descriptionClass }) => (
+  <motion.section
+    id={id}
+    className={twMerge('py-24 relative overflow-hidden', className)}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    transition={{ duration: 0.8 }}
+    viewport={{ once: true, amount: 0.3 }}
+  >
+    <div className="container mx-auto px-4 relative z-10">
+      {title && (
+        <div className="text-center mb-16">
+          <h2 className={twMerge("text-4xl md:text-5xl font-extrabold mb-4", titleClass)}>{title}</h2>
+          {description && <p className={twMerge("text-lg md:text-xl max-w-2xl mx-auto", descriptionClass)}>{description}</p>}
+        </div>
+      )}
+      {children}
+    </div>
+  </motion.section>
+);
+
+// Service Card Component with Vibrant Colors
+const ServiceCard = ({ icon: Icon, title, items }) => (
+  <motion.div
+    initial={{ y: 20, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true, amount: 0.3 }}
+    className="bg-white rounded-3xl shadow-2xl p-8 flex flex-col items-center text-center transition-transform hover:scale-[1.02] border border-slate-100"
+  >
+    <div className="p-5 rounded-full bg-gradient-to-br from-pink-500 to-purple-500 text-white mb-6 shadow-md">
+      <Icon size={32} />
+    </div>
+    <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
+    <ul className="text-slate-600 text-left list-none p-0 space-y-2">
+      {items.map((item, index) => (
+        <li key={index} className="flex items-start">
+          <CheckCircle size={16} className="text-fuchsia-500 mr-2 mt-1 flex-shrink-0" />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </motion.div>
+);
+
+// Pillar Card Component with Colorful Icons
+const PillarCard = ({ icon: Icon, title, description }) => (
+  <motion.div
+    initial={{ y: 20, opacity: 0 }}
+    whileInView={{ y: 0, opacity: 1 }}
+    transition={{ duration: 0.6 }}
+    viewport={{ once: true, amount: 0.3 }}
+    className="bg-white rounded-3xl shadow-xl p-8 flex flex-col items-center text-center transition-transform hover:scale-[1.02] border border-slate-100"
+  >
+    <div className="p-5 rounded-full bg-gradient-to-br from-indigo-500 to-blue-600 text-white mb-6 shadow-md">
+      <Icon size={32} />
+    </div>
+    <h3 className="text-xl font-bold text-slate-800 mb-2">{title}</h3>
+    <p className="text-slate-600 text-sm">{description}</p>
+  </motion.div>
+);
+
+// Animated Background for various sections
+const AnimatedBackground = ({ className }) => (
+  <div className={twMerge("absolute inset-0 z-0 overflow-hidden", className)}>
+    <motion.div
+      initial={{ y: '100%', x: '-50%', scale: 0.5, rotate: 0 }}
+      animate={{ y: '-100%', x: '50%', scale: 1.5, rotate: 360 }}
+      transition={{ repeat: Infinity, duration: 25, ease: 'linear' }}
+      className="absolute top-1/2 left-1/2 w-48 h-48 bg-fuchsia-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+    ></motion.div>
+    <motion.div
+      initial={{ y: '-100%', x: '50%', scale: 1.5, rotate: 0 }}
+      animate={{ y: '100%', x: '-50%', scale: 0.5, rotate: -360 }}
+      transition={{ repeat: Infinity, duration: 30, ease: 'linear' }}
+      className="absolute top-1/2 left-1/2 w-64 h-64 bg-cyan-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+    ></motion.div>
+    <motion.div
+      initial={{ y: '50%', x: '-100%', scale: 1, rotate: 0 }}
+      animate={{ y: '-50%', x: '100%', scale: 0.8, rotate: 360 }}
+      transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
+      className="absolute top-1/3 right-1/4 w-32 h-32 bg-yellow-400 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+    ></motion.div>
+    <motion.div
+      initial={{ y: '-50%', x: '100%', rotate: 0 }}
+      animate={{ y: '50%', x: '-100%', rotate: -360 }}
+      transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
+      className="absolute bottom-1/3 left-1/4 w-40 h-40 bg-orange-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+    ></motion.div>
+    <motion.div
+      initial={{ y: '100%', x: '100%', rotate: 0 }}
+      animate={{ y: '-100%', x: '-100%', rotate: 180 }}
+      transition={{ repeat: Infinity, duration: 22, ease: 'linear' }}
+      className="absolute top-3/4 left-1/4 w-56 h-56 bg-indigo-500 rounded-full mix-blend-lighten opacity-30 filter blur-3xl"
+    ></motion.div>
+  </div>
+);
+
+// Main Application Component
+const App = () => {
+  const tools = [
+    { name: 'Canva', icon: Palette },
+    { name: 'ChatGPT', icon: Bot },
+    { name: 'Claude', icon: Bot },
+    { name: 'DALL-E', icon: Globe },
+    { name: 'Adobe Firefly', icon: Rocket },
+    { name: 'Heygen', icon: Code },
+    { name: 'Sora', icon: Rocket },
+    { name: 'CapCut', icon: Grid },
+    { name: 'Google Workspace', icon: FileText },
+    { name: 'Microsoft Office', icon: FileText },
+    { name: 'Shopify', icon: ShoppingCart },
+    { name: 'WooCommerce', icon: Database },
+    { name: 'Elementor', icon: Layout },
+    { name: 'Divi', icon: Layout },
+    { name: 'Trello', icon: Kanban },
+    { name: 'Asana', icon: Kanban },
+    { name: 'ClickUp', icon: Kanban },
+  ];
+
+  return (
+    <div className="font-sans text-slate-800 bg-white">
+
+      {/* Hero Section */}
+      <Section id="hero" className="bg-gradient-to-br from-pink-50 to-white relative min-h-screen flex items-center">
+        <AnimatedBackground />
+        <div className="text-center max-w-4xl mx-auto py-24 z-10">
+          <motion.h1
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-6xl md:text-8xl font-extrabold mb-4 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-fuchsia-600"
+          >
+            Md. Abidur Rahman
+          </motion.h1>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            className="text-xl md:text-2xl text-purple-600 font-bold mb-6"
+          >
+            Virtual Assistant | Social Media | Project Management | AI Prompt Engineer
+          </motion.p>
+          <motion.p
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="text-lg md:text-xl text-slate-600 mb-10 max-w-3xl mx-auto"
+          >
+            Dedicated Virtual Assistant with 10+ years of experience in streamlining workflows, managing projects, and delivering results. I specialize in social media management, e-commerce operations, AI-powered solutions, and organizational support to help businesses run smoothly.
+          </motion.p>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.8, duration: 0.8 }}
+          >
+            <a href="#contact">
+              <Button size="lg" className="w-56">Contact Me</Button>
+            </a>
+          </motion.div>
+        </div>
+      </Section>
+
+      {/* About Section */}
+      <Section id="about" title="About Me" className="bg-white text-slate-900">
+        <p className="text-lg text-slate-600 max-w-3xl mx-auto text-center">
+          I’m a proactive and detail-oriented Virtual Assistant who thrives on organization, creativity, and problem-solving. Over the last decade, I’ve helped entrepreneurs, small businesses, and teams save time, stay organized, and grow faster. From managing e-commerce stores and social media campaigns to handling day-to-day admin tasks and project coordination, I bring structure, clarity, and efficiency to every role.
+        </p>
+      </Section>
+
+      {/* Services Section */}
+      <Section id="services" title="How I Can Help You" className="bg-white text-slate-900">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <ServiceCard
+            icon={Briefcase}
+            title="Virtual Assistance"
+            items={['Email & calendar management', 'Travel planning', 'Appointment scheduling', 'Customer service']}
+          />
+          <ServiceCard
+            icon={Share2}
+            title="Social Media Management"
+            items={['Strategy, content creation, and scheduling', 'Facebook, Instagram, LinkedIn, Twitter, YouTube']}
+          />
+          <ServiceCard
+            icon={ShoppingCart}
+            title="E-Commerce Store Management"
+            items={['Shopify, WooCommerce, Wix, Etsy, eBay', 'Product uploads, inventory tracking, order management']}
+          />
+          <ServiceCard
+            icon={Feather}
+            title="WordPress Support"
+            items={['Page building and updates', 'Using Elementor, Divi, Oxygen']}
+          />
+          <ServiceCard
+            icon={Kanban}
+            title="Project Management"
+            items={['Efficient workflows using Asana, Trello, Monday, ClickUp']}
+          />
+          <ServiceCard
+            icon={Bot}
+            title="AI-Powered Support"
+            items={['Prompt engineering, content creation', 'Simple video editing with tools like ChatGPT, Claude, Canva, CapCut, Heygen']}
+          />
+        </div>
+      </Section>
+
+      {/* Tools Section */}
+      <Section id="tools" title="Tools I Use" className="bg-white text-slate-900">
+        <div className="flex flex-wrap justify-center gap-8">
+          {tools.map((tool, index) => (
+            <motion.div
+              key={index}
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              viewport={{ once: true, amount: 0.5 }}
+              className="flex flex-col items-center text-center p-4 rounded-xl hover:bg-slate-100 transition-colors"
+            >
+              <div className="p-5 rounded-full bg-slate-100 mb-3 shadow-sm">
+                <tool.icon size={36} className="text-slate-600" />
+              </div>
+              <span className="text-sm font-medium text-slate-700">{tool.name}</span>
+            </motion.div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Why Work With Me Section */}
+      <Section id="why-work-with-me" title="Why Work With Me" className="bg-white text-slate-900">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <PillarCard
+            icon={User}
+            title="10+ Years Experience"
+            description="Proven track record with diverse clients, delivering high-quality results consistently."
+          />
+          <PillarCard
+            icon={Zap}
+            title="Reliable & Proactive"
+            description="I anticipate needs, solve problems before they arise, and always deliver on time."
+          />
+          <PillarCard
+            icon={MessageCircle}
+            title="Versatile Skillset"
+            description="From day-to-day admin tasks to AI-powered solutions, I adapt to your unique needs."
+          />
+        </div>
+      </Section>
+
+      {/* Contact Section */}
+      <Section id="contact" title="Let’s Connect" className="bg-white text-slate-900">
+        <div className="max-w-xl mx-auto rounded-3xl shadow-2xl p-8 border border-slate-200">
+          <div className="flex justify-center items-center gap-8 mb-8">
+            <a href="mailto:porosh.abidlaw@gmail.com" className="flex items-center text-fuchsia-600 hover:text-fuchsia-700 transition-colors">
+              <Mail size={24} className="mr-2" />
+              <span className="font-medium">Email</span>
+            </a>
+            <a href="https://linkedin.com/in/rahman-abidur" target="_blank" rel="noopener noreferrer" className="flex items-center text-purple-600 hover:text-purple-700 transition-colors">
+              <Linkedin size={24} className="mr-2" />
+              <span className="font-medium">LinkedIn</span>
+            </a>
+          </div>
+          <form className="space-y-6">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1">Name</label>
+              <input type="text" id="name" name="name" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required />
             </div>
-            <div class="flex-1 flex justify-center md:justify-end">
-                <svg class="w-64 h-64 sm:w-80 sm:h-80 text-indigo-500" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M37.9,-54.9C49.9,-44.6,61.1,-35.1,65.8,-22.7C70.6,-10.3,68.9,5.1,65.1,20.6C61.4,36.1,55.6,51.8,44.7,60.8C33.7,69.9,17.1,72.4,1.4,70.5C-14.4,68.6,-28.9,62.3,-38.3,52.2C-47.7,42.1,-52.1,28.2,-55.8,14.6C-59.5,1.1,-62.4,-11.9,-60.7,-25.1C-59,-38.3,-52.7,-51.7,-41.8,-62.4C-30.8,-73.1,-15.4,-81,0.2,-81.2C15.8,-81.4,31.5,-73.9,43.2,-64.1C54.9,-54.4,62.6,-42.6,60.2,-31.1C57.9,-19.5,45.5,-8.3,34.9,1.1C24.4,10.5,15.7,18.9,8.5,23.3C1.4,27.8,-4.2,28.3,-12.3,27.3C-20.5,26.4,-31.1,24.1,-39.3,18.9C-47.4,13.7,-53.1,5.6,-53.4,-2.9C-53.7,-11.4,-48.5,-20.5,-40.4,-27.1C-32.3,-33.7,-21.3,-37.7,-10.5,-42.6C0.4,-47.5,11.2,-53.3,20.5,-59.5C29.7,-65.7,37.5,-72.2,45.1,-79.6C52.7,-86.9,60.1,-95.2,60.1,-95.1C60.2,-95.1,52.8,-86.6,44.8,-76.3C36.8,-66,28.2,-53.9,20.1,-43.3C12,-32.6,4.3,-23.5,-3.6,-17.1C-11.4,-10.7,-19.1,-7.2,-25.7,-3.6C-32.3,0,-37.8,3.6,-42.3,8.7C-46.7,13.8,-50,20.5,-49.6,27.3C-49.1,34.1,-44.9,41,-38.6,48.2C-32.4,55.5,-24.1,63,-15.1,69.5C-6.2,76,-0.6,81.4,5.4,85.1C11.5,88.9,17.2,90.9,21.5,86.6C25.8,82.3,28.7,71.6,35.2,61.9C41.7,52.2,51.8,43.4,57.1,34.6C62.4,25.8,62.8,17,62.3,9.5C61.8,2,60.4,-4.3,58.4,-9.9C56.4,-15.5,53.8,-20.4,50.8,-24.8C47.8,-29.2,44.5,-33.1,41,-36.8C37.5,-40.5,33.7,-44,30.2,-46.8C26.8,-49.6,23.6,-51.7,20.9,-54.9C18.2,-58.1,16,-62.4,13.7,-67.2C11.4,-72,9,-77.3,6.3,-82.7C3.6,-88,-0.1,-93.4,-4.2,-96.2C-8.4,-99.1,-12.8,-99.5,-16.2,-97.6C-19.6,-95.6,-22,-91.3,-23.6,-87C-25.2,-82.8,-26.1,-78.6,-27.1,-75.4C-28.1,-72.1,-29.2,-69.9,-29.2,-68.8C-29.2,-67.7,-28.1,-67.6,-25.9,-68.2C-23.7,-68.9,-20.3,-70.2,-17.5,-71.4C-14.7,-72.6,-12.5,-73.7,-11,-73.9C-9.5,-74.1,-8.8,-73.4,-8.1,-72.9C-7.4,-72.4,-6.7,-72.1,-6.3,-71.9C-5.8,-71.7,-5.7,-71.6,-5.7,-71.6C-5.7,-71.5,-6,-71.4,-6.3,-71.4C-6.7,-71.3,-7.1,-71.2,-7.3,-71.2C-7.6,-71.1,-7.7,-71.1,-7.7,-71.1C-7.7,-71.1,-7.7,-71.1,-7.7,-71.1C-7.7,-71.1,-7.7,-71.1,-7.7,-71.1C-7.7,-71.1,-7.7,-71.1,-7.7,-71.1Z" transform="translate(100 100)" />
-                </svg>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1">Email</label>
+              <input type="email" id="email" name="email" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required />
             </div>
-        </div>
-    </section>
-
-    <section class="bg-indigo-50 py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Services That Elevate Your Business</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card card-indigo">
-                    <h3 class="font-semibold text-lg mb-2">Virtual Assistance</h3>
-                    <p>Email & calendar management, travel planning, appointment scheduling, and customer service. I'm here to make your day easier.</p>
-                </div>
-                <div class="card card-indigo">
-                    <h3 class="font-semibold text-lg mb-2">Social Media Management</h3>
-                    <p>Strategy, content creation, and scheduling for Facebook, Instagram, LinkedIn, and more. Crafting scroll-stopping posts that build your brand.</p>
-                </div>
-                <div class="card card-indigo">
-                    <h3 class="font-semibold text-lg mb-2">E-Commerce Management</h3>
-                    <p>Expert in Shopify, WooCommerce, Wix, and Etsy—from product uploads to inventory management. Seamlessly handle your online store.</p>
-                </div>
-                <div class="card card-indigo">
-                    <h3 class="font-semibold text-lg mb-2">WordPress Magic</h3>
-                    <p>Content updates and basic page building using Elementor, Divi, and Oxygen that bring your site to life and keep it fresh.</p>
-                </div>
-                <div class="card card-indigo">
-                    <h3 class="font-semibold text-lg mb-2">Project Management</h3>
-                    <p>Streamline your workflows and keep your team organized using tools like Asana, Trello, Monday, and ClickUp.</p>
-                </div>
-                <div class="card card-indigo">
-                    <h3 class="font-semibold text-lg mb-2">AI Prompt Engineering</h3>
-                    <p>Harnessing the power of AI to generate innovative content and creative solutions with ChatGPT, Claude 3.5, and others.</p>
-                </div>
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1">Message</label>
+              <textarea id="message" name="message" rows="4" className="w-full p-3 border border-slate-300 rounded-lg focus:ring-fuchsia-500 focus:border-fuchsia-500 transition-colors" required></textarea>
             </div>
+            <Button type="submit" className="w-full">Send Message</Button>
+          </form>
         </div>
-    </section>
+      </Section>
 
-    <section class="container mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Tools That Power My Efficiency</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            <div class="skill-pill">Canva</div>
-            <div class="skill-pill">ChatGPT, Claude 3.5 Sonnet, DALL-E</div>
-            <div class="skill-pill">Google Workspace & Microsoft Office</div>
-            <div class="skill-pill">Asana, Trello, Monday, ClickUp</div>
-            <div class="skill-pill">Shopify, WooCommerce, Wix, Etsy</div>
-            <div class="skill-pill">Elementor, Divi, Oxygen</div>
-            <div class="skill-pill">Meta Business Manager, LinkedIn</div>
-            <div class="skill-pill">Sora, CapCut, Heygen</div>
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-400 text-center py-8">
+        <div className="container mx-auto px-4">
+          <p className="text-sm">&copy; 2025 Md. Abidur Rahman. All rights reserved.</p>
         </div>
-    </section>
+      </footer>
+    </div>
+  );
+};
 
-    <section class="bg-gray-800 text-white py-16">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-12">Why Work With Me?</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="flex flex-col items-center">
-                    <div class="icon-circle">
-                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.023 12.023 0 005.412 8.783a11.955 11.955 0 01-1.282 12.871A11.996 11.996 0 0012 22c3.047 0 5.864-.997 8.169-2.695a12.023 12.023 0 00-1.282-12.871z" /></svg>
-                    </div>
-                    <h3 class="font-semibold text-lg mt-4 mb-2">Proactive & Reliable</h3>
-                    <p class="text-gray-400">I anticipate your needs and deliver beyond expectations, with on-time delivery as my promise.</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="icon-circle">
-                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    </div>
-                    <h3 class="font-semibold text-lg mt-4 mb-2">10+ Years of Experience</h3>
-                    <p class="text-gray-400">A decade of proven success with glowing reviews, ready to make your workload lighter and your success brighter.</p>
-                </div>
-                <div class="flex flex-col items-center">
-                    <div class="icon-circle">
-                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.974 2.887a1 1 0 00-.363 1.118l1.519 4.674c.3.921-.755 1.688-1.54 1.118l-3.974-2.887a1 1 0 00-1.176 0l-3.974 2.887c-.784.57-1.84-.197-1.54-1.118l1.519-4.674a1 1 0 00-.363-1.118l-3.974-2.887c-.784-.57-.382-1.81.588-1.81h4.915a1 1 0 00.95-.69l1.519-4.674z" /></svg>
-                    </div>
-                    <h3 class="font-semibold text-lg mt-4 mb-2">Versatile & Detail-Oriented</h3>
-                    <p class="text-gray-400">Whether it’s admin tasks, marketing, or design—I’m your one-stop solution, delivering error-free results, every time.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
-        <div class="container mx-auto px-4">
-            <p>Your success is my mission. Let's create something amazing together!</p>
-            <p class="mt-4 text-sm">&copy; 2025 Md. Abidur Rahman. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
-
-</body>
-</html>
+export default App;
