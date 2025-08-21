@@ -1,120 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Md. Abidur Rahman - Virtual Assistant</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.3/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/framer-motion/dist/framer-motion.umd.js"></script>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Abidur Rahman - Virtual Assistant & AI Prompt Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='90' font-size='90'>✨</text></svg>">
 </head>
-<body class="bg-gradient-to-r from-purple-100 via-pink-100 to-yellow-100 text-gray-900 font-sans">
+<body class="bg-gray-50 text-gray-800 font-poppins antialiased leading-relaxed">
 
-  <!-- Hero Section -->
-  <section class="relative h-screen flex flex-col justify-center items-center text-center px-6">
-    <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
-      <svg class="animate-spin-slow absolute top-10 left-10 w-32 h-32 text-purple-300 opacity-50" fill="currentColor" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"/></svg>
-      <svg class="animate-pulse absolute bottom-20 right-20 w-48 h-48 text-pink-300 opacity-30" fill="currentColor" viewBox="0 0 100 100"><rect width="100" height="100"/></svg>
-    </div>
-    <h1 class="text-5xl md:text-6xl font-bold mb-4 animate-fadeIn">Md. Abidur Rahman</h1>
-    <p class="text-xl md:text-2xl mb-6 animate-fadeIn delay-200">Your All-in-One Virtual Assistant, Social Media & Project Management Expert</p>
-    <div class="flex gap-4 justify-center animate-fadeIn delay-400">
-      <a href="mailto:porosh.abidlaw@gmail.com" class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Email Me</a>
-      <a href="https://www.linkedin.com/in/rahman-abidur/" target="_blank" class="bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition">LinkedIn</a>
-    </div>
-  </section>
+    <header class="container mx-auto px-4 py-8 md:py-16">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-16">
+            <div class="flex-1 text-center md:text-left">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-gray-900 mb-4">
+                    Md. Abidur Rahman
+                </h1>
+                <p class="text-lg sm:text-xl text-indigo-600 font-medium mb-2">
+                    All Around Virtual Assistant | AI Prompt Engineer
+                </p>
+                <p class="text-gray-600 max-w-lg mx-auto md:mx-0">
+                    ✨ Top-Rated VA with 10+ Years of Experience in Turning To-Do Lists into Done Deals! A Jack of All Trades, Master of Results!
+                </p>
+                <div class="mt-8 flex justify-center md:justify-start space-x-4">
+                    <a href="mailto:porosh.abidlaw@gmail.com" class="button button-primary">
+                        Say Hello!
+                    </a>
+                    <a href="https://www.linkedin.com/in/rahman-abidur/" target="_blank" class="button button-secondary">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center md:justify-end">
+                <svg class="w-64 h-64 sm:w-80 sm:h-80 text-indigo-500" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M37.9,-54.9C49.9,-44.6,61.1,-35.1,65.8,-22.7C70.6,-10.3,68.9,5.1,65.1,20.6C61.4,36.1,55.6,51.8,44.7,60.8C33.7,69.9,17.1,72.4,1.4,70.5C-14.4,68.6,-28.9,62.3,-38.3,52.2C-47.7,42.1,-52.1,28.2,-55.8,14.6C-59.5,1.1,-62.4,-11.9,-60.7,-25.1C-59,-38.3,-52.7,-51.7,-41.8,-62.4C-30.8,-73.1,-15.4,-81,0.2,-81.2C15.8,-81.4,31.5,-73.9,43.2,-64.1C54.9,-54.4,62.6,-42.6,60.2,-31.1C57.9,-19.5,45.5,-8.3,34.9,1.1C24.4,10.5,15.7,18.9,8.5,23.3C1.4,27.8,-4.2,28.3,-12.3,27.3C-20.5,26.4,-31.1,24.1,-39.3,18.9C-47.4,13.7,-53.1,5.6,-53.4,-2.9C-53.7,-11.4,-48.5,-20.5,-40.4,-27.1C-32.3,-33.7,-21.3,-37.7,-10.5,-42.6C0.4,-47.5,11.2,-53.3,20.5,-59.5C29.7,-65.7,37.5,-72.2,45.1,-79.6C52.7,-86.9,60.1,-95.2,60.1,-95.1C60.2,-95.1,52.8,-86.6,44.8,-76.3C36.8,-66,28.2,-53.9,20.1,-43.3C12,-32.6,4.3,-23.5,-3.6,-17.1C-11.4,-10.7,-19.1,-7.2,-25.7,-3.6C-32.3,0,-37.8,3.6,-42.3,8.7C-46.7,13.8,-50,20.5,-49.6,27.3C-49.1,34.1,-44.9,41,-38.6,48.2C-32.4,55.5,-24.1,63,-15.1,69.5C-6.2,76,-0.6,81.4,5.4,85.1C11.5,88.9,17.2,90.9,21.5,86.6C25.8,82.3,28.7,71.6,35.2,61.9C41.7,52.2,51.8,43.4,57.1,34.6C62.4,25.8,62.8,17,62.3,9.5C61.8,2,60.4,-4.3,58.4,-9.9C56.4,-15.5,53.8,-20.4,50.8,-24.8C47.8,-29.2,44.5,-33.1,41,-36.8C37.5,-40.5,33.7,-44,30.2,-46.8C26.8,-49.6,23.6,-51.7,20.9,-54.9C18.2,-58.1,16,-62.4,13.7,-67.2C11.4,-72,9,-77.3,6.3,-82.7C3.6,-88,-0.1,-93.4,-4.2,-96.2C-8.4,-99.1,-12.8,-99.5,-16.2,-97.6C-19.6,-95.6,-22,-91.3,-23.6,-87C-25.2,-82.8,-26.1,-78.6,-27.1,-75.4C-28.1,-72.1,-29.2,-69.9,-29.2,-68.8C-29.2,-67.7,-28.1,-67.6,-25.9,-68.2C-23.7,-68.9,-20.3,-70.2,-17.5,-71.4C-14.7,-72.6,-12.5,-73.7,-11,-73.9C-9.5,-74.1,-8.8,-73.4,-8.1,-72.9C-7.4,-72.4,-6.7,-72.1,-6.3,-71.9C-5.8,-71.7,-5.7,-71.6,-5.7,-71.6C-5.7,-71.5,-6,-71.4,-6.3,-71.4C-6.7,-71.3,-7.1,-71.2,-7.3,-71.2C-7.6,-71.1,-7.7,-71.1,-7.7,-71.1C-7.7,-71.1,-7.7,-71.1,-7.7,-71.1C-7.7,-71.1,-7.7,-71.1,-7.7,-71.1C-7.7,-71.1,-7.7,-71.1,-7.7,-71.1Z" transform="translate(100 100)" />
+                </svg>
+            </div>
+        </div>
+    </section>
 
-  <!-- About Section -->
-  <section class="py-20 px-6 bg-white">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-8">About Me</h2>
-      <p class="text-lg leading-relaxed">
-        I’m a dedicated Virtual Assistant with 10+ years of experience in streamlining workflows, boosting productivity, and bringing creativity to every project. From managing e-commerce stores, crafting scroll-stopping social media posts, to organizing business operations, I provide versatile support to help you focus on what truly matters—growing your business.  
-        <br><br>
-        Expert in Virtual Assistance, Social Media Management, Project Management, E-commerce, WordPress, AI Prompt Engineering, and more. Reliable, detail-oriented, and committed to timely delivery.
-      </p>
-    </div>
-  </section>
+    <section class="bg-indigo-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Services That Elevate Your Business</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card card-indigo">
+                    <h3 class="font-semibold text-lg mb-2">Virtual Assistance</h3>
+                    <p>Email & calendar management, travel planning, appointment scheduling, and customer service. I'm here to make your day easier.</p>
+                </div>
+                <div class="card card-indigo">
+                    <h3 class="font-semibold text-lg mb-2">Social Media Management</h3>
+                    <p>Strategy, content creation, and scheduling for Facebook, Instagram, LinkedIn, and more. Crafting scroll-stopping posts that build your brand.</p>
+                </div>
+                <div class="card card-indigo">
+                    <h3 class="font-semibold text-lg mb-2">E-Commerce Management</h3>
+                    <p>Expert in Shopify, WooCommerce, Wix, and Etsy—from product uploads to inventory management. Seamlessly handle your online store.</p>
+                </div>
+                <div class="card card-indigo">
+                    <h3 class="font-semibold text-lg mb-2">WordPress Magic</h3>
+                    <p>Content updates and basic page building using Elementor, Divi, and Oxygen that bring your site to life and keep it fresh.</p>
+                </div>
+                <div class="card card-indigo">
+                    <h3 class="font-semibold text-lg mb-2">Project Management</h3>
+                    <p>Streamline your workflows and keep your team organized using tools like Asana, Trello, Monday, and ClickUp.</p>
+                </div>
+                <div class="card card-indigo">
+                    <h3 class="font-semibold text-lg mb-2">AI Prompt Engineering</h3>
+                    <p>Harnessing the power of AI to generate innovative content and creative solutions with ChatGPT, Claude 3.5, and others.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Services Section -->
-  <section class="py-20 px-6 bg-gradient-to-r from-purple-50 via-pink-50 to-yellow-50">
-    <div class="max-w-6xl mx-auto text-center mb-12">
-      <h2 class="text-4xl font-bold mb-6">Services</h2>
-      <p class="text-lg text-gray-700">Solutions that elevate your business and productivity</p>
-    </div>
-    <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-      <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition">
-        <h3 class="text-2xl font-semibold mb-4">Virtual Assistance</h3>
-        <p>Email & calendar management, travel planning, appointment scheduling, customer service, and more.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition">
-        <h3 class="text-2xl font-semibold mb-4">Social Media Management</h3>
-        <p>Strategy, content creation, scheduling across Facebook, Instagram, LinkedIn, Twitter, and YouTube.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition">
-        <h3 class="text-2xl font-semibold mb-4">Project Management</h3>
-        <p>Streamlining workflows using Asana, Trello, Monday, ClickUp, and more for smooth collaboration.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition">
-        <h3 class="text-2xl font-semibold mb-4">E-Commerce Management</h3>
-        <p>Shopify, WooCommerce, Wix, Etsy, and eBay store management including product uploads and inventory.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition">
-        <h3 class="text-2xl font-semibold mb-4">WordPress Services</h3>
-        <p>Content updates and page building using Elementor, Divi, Oxygen, and custom solutions.</p>
-      </div>
-      <div class="bg-white p-8 rounded-2xl shadow-lg transform hover:scale-105 transition">
-        <h3 class="text-2xl font-semibold mb-4">AI & Creative Tools</h3>
-        <p>ChatGPT, Claude, DALL-E, Canva, Adobe Firefly, CapCut, Heygen, and more to boost productivity and creativity.</p>
-      </div>
-    </div>
-  </section>
+    <section class="container mx-auto px-4 py-16">
+        <h2 class="text-3xl font-bold text-center mb-12 text-gray-900">Tools That Power My Efficiency</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="skill-pill">Canva</div>
+            <div class="skill-pill">ChatGPT, Claude 3.5 Sonnet, DALL-E</div>
+            <div class="skill-pill">Google Workspace & Microsoft Office</div>
+            <div class="skill-pill">Asana, Trello, Monday, ClickUp</div>
+            <div class="skill-pill">Shopify, WooCommerce, Wix, Etsy</div>
+            <div class="skill-pill">Elementor, Divi, Oxygen</div>
+            <div class="skill-pill">Meta Business Manager, LinkedIn</div>
+            <div class="skill-pill">Sora, CapCut, Heygen</div>
+        </div>
+    </section>
 
-  <!-- Tools Section -->
-  <section class="py-20 px-6 bg-white">
-    <div class="max-w-6xl mx-auto text-center mb-12">
-      <h2 class="text-4xl font-bold mb-6">Tools & Expertise</h2>
-      <p class="text-lg text-gray-700">Platforms and software I excel at using</p>
-    </div>
-    <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-      <div class="p-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl shadow hover:scale-105 transition">Canva</div>
-      <div class="p-4 bg-gradient-to-r from-pink-100 to-yellow-100 rounded-xl shadow hover:scale-105 transition">ChatGPT & AI Tools</div>
-      <div class="p-4 bg-gradient-to-r from-yellow-100 to-purple-100 rounded-xl shadow hover:scale-105 transition">Shopify & WooCommerce</div>
-      <div class="p-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl shadow hover:scale-105 transition">WordPress Builders</div>
-      <div class="p-4 bg-gradient-to-r from-pink-100 to-yellow-100 rounded-xl shadow hover:scale-105 transition">Project Management Tools</div>
-      <div class="p-4 bg-gradient-to-r from-yellow-100 to-purple-100 rounded-xl shadow hover:scale-105 transition">Social Media Platforms</div>
-      <div class="p-4 bg-gradient-to-r from-purple-100 to-pink-100 rounded-xl shadow hover:scale-105 transition">Adobe Firefly & DALL-E</div>
-      <div class="p-4 bg-gradient-to-r from-pink-100 to-yellow-100 rounded-xl shadow hover:scale-105 transition">CapCut & Heygen</div>
-    </div>
-  </section>
+    <section class="bg-gray-800 text-white py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-12">Why Work With Me?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center">
+                    <div class="icon-circle">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.023 12.023 0 005.412 8.783a11.955 11.955 0 01-1.282 12.871A11.996 11.996 0 0012 22c3.047 0 5.864-.997 8.169-2.695a12.023 12.023 0 00-1.282-12.871z" /></svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mt-4 mb-2">Proactive & Reliable</h3>
+                    <p class="text-gray-400">I anticipate your needs and deliver beyond expectations, with on-time delivery as my promise.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="icon-circle">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mt-4 mb-2">10+ Years of Experience</h3>
+                    <p class="text-gray-400">A decade of proven success with glowing reviews, ready to make your workload lighter and your success brighter.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="icon-circle">
+                        <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.974 2.887a1 1 0 00-.363 1.118l1.519 4.674c.3.921-.755 1.688-1.54 1.118l-3.974-2.887a1 1 0 00-1.176 0l-3.974 2.887c-.784.57-1.84-.197-1.54-1.118l1.519-4.674a1 1 0 00-.363-1.118l-3.974-2.887c-.784-.57-.382-1.81.588-1.81h4.915a1 1 0 00.95-.69l1.519-4.674z" /></svg>
+                    </div>
+                    <h3 class="font-semibold text-lg mt-4 mb-2">Versatile & Detail-Oriented</h3>
+                    <p class="text-gray-400">Whether it’s admin tasks, marketing, or design—I’m your one-stop solution, delivering error-free results, every time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact Section -->
-  <section class="py-20 px-6 bg-gradient-to-r from-purple-50 via-pink-50 to-yellow-50">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
-      <p class="text-lg mb-8">I’m here to help you succeed. Let’s connect!</p>
-      <div class="flex flex-col md:flex-row gap-4 justify-center">
-        <a href="mailto:porosh.abidlaw@gmail.com" class="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Email Me</a>
-        <a href="https://www.linkedin.com/in/rahman-abidur/" target="_blank" class="bg-pink-500 text-white px-6 py-3 rounded-lg hover:bg-pink-600 transition">LinkedIn</a>
-      </div>
-    </div>
-  </section>
+    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>Your success is my mission. Let's create something amazing together!</p>
+            <p class="mt-4 text-sm">&copy; 2025 Md. Abidur Rahman. All rights reserved.</p>
+        </div>
+    </footer>
 
-  <!-- Footer -->
-  <footer class="py-8 text-center text-gray-600 bg-white">
-    &copy; 2025 Md. Abidur Rahman. All rights reserved.
-  </footer>
-
-  <!-- Animations -->
-  <script>
-    document.querySelectorAll('.animate-fadeIn').forEach((el, i) => {
-      el.style.opacity = 0;
-      setTimeout(() => {
-        el.style.transition = 'opacity 1s';
-        el.style.opacity = 1;
-      }, i * 200);
-    });
-  </script>
+    <script src="script.js"></script>
 
 </body>
 </html>
