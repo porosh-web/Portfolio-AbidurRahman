@@ -1,28 +1,164 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-/* Custom animations */
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Base Styles */
+body {
+    font-family: 'Poppins', sans-serif;
 }
-.animate-spin-slow {
-  animation: spin-slow 40s linear infinite;
+
+.container {
+    max-width: 1200px;
+}
+
+/* Custom Tailwind-like Utilities & Components */
+.bg-gray-50 { background-color: #f9fafb; }
+.bg-indigo-50 { background-color: #eef2ff; }
+.bg-gray-800 { background-color: #1f2937; }
+.bg-gray-900 { background-color: #111827; }
+.text-gray-900 { color: #111827; }
+.text-indigo-600 { color: #4f46e5; }
+.text-gray-600 { color: #4b5563; }
+.text-gray-800 { color: #1f2937; }
+.text-gray-400 { color: #9ca3af; }
+
+.font-poppins { font-family: 'Poppins', sans-serif; }
+.font-extrabold { font-weight: 800; }
+.font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
+
+.antialiased { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+.py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+.px-4 { padding-left: 1rem; padding-right: 1rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.my-8 { margin-top: 2rem; margin-bottom: 2rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.mb-12 { margin-bottom: 3rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-8 { margin-top: 2rem; }
+.gap-8 { gap: 2rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-16 { gap: 4rem; }
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.flex-1 { flex: 1 1 0%; }
+
+.grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.card {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.button-primary {
+    background-color: #4f46e5;
+    color: white;
+}
+.button-primary:hover {
+    background-color: #4338ca;
+    transform: translateY(-2px);
+}
+
+.button-secondary {
+    background-color: transparent;
+    border: 2px solid #4f46e5;
+    color: #4f46e5;
+}
+.button-secondary:hover {
+    background-color: #4f46e5;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.skill-pill {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+.icon-circle {
+    background-color: #4f46e5;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Animations */
+.hero-text.visible {
+    animation: fadeInSlideUp 1s ease-out;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.card.visible {
+    animation: fadeIn 0.8s ease-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fadeIn {
-  animation: fadeIn 1s forwards;
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-@keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 0.3; }
-  50% { transform: scale(1.2); opacity: 0.5; }
+
+/* Media Queries for responsiveness */
+@media (min-width: 640px) {
+    .sm\:text-4xl { font-size: 2.25rem; }
+    .sm\:text-xl { font-size: 1.25rem; }
+    .sm\:w-80 { width: 20rem; }
+    .sm\:h-80 { height: 20rem; }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
-.animate-pulse {
-  animation: pulse 6s infinite;
+
+@media (min-width: 768px) {
+    .md\:py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+    .md\:text-left { text-align: left; }
+    .md\:mx-0 { margin-left: 0; margin-right: 0; }
+    .md\:justify-start { justify-content: flex-start; }
+    .md\:justify-end { justify-content: flex-end; }
+    .md\:flex-row { flex-direction: row; }
+    .md\:gap-16 { gap: 4rem; }
+    .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+    .lg\:text-5xl { font-size: 3rem; }
+    .grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
